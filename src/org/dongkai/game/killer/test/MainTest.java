@@ -7,12 +7,11 @@ import java.util.Set;
 
 import org.dongkai.game.killer.core.Controller;
 import org.dongkai.game.killer.core.Player;
-import org.dongkai.game.killer.core.SimpleController;
 import org.dongkai.game.killer.core.Util;
 
 public class MainTest {
 
-	SimpleController controller = new SimpleController();
+	Controller controller = Controller.getController();
 	List<String> names = new ArrayList<>();
 
 	public MainTest() {
@@ -38,15 +37,14 @@ public class MainTest {
 	}
 
 	public void display() {
-		for (Player player : Controller.players.values()) {
-			System.out.println(player.getName() + " " + player.getRole() + " " + player.getStatus()
-					+ " " + player.getDeathCount());
+		for (Player player : Controller.getController().getPlayers().values()) {
+			System.out.println(player.toString());
 		}
 	}
 
 	public void testVote(MainTest test, String name) {
-		for (Player player : Controller.players.values()) {
-			player.voteToDeath(Controller.players.get(name));
+		for (Player player : Controller.getController().getPlayers().values()) {
+			player.voteToDeath(Controller.getController().getPlayers().get(name));
 		}
 		test.controller.killPerson();
 	}

@@ -1,5 +1,8 @@
 package org.dongkai.game.killer.core;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
+
 public class Player {
 
 	public enum Role {
@@ -10,6 +13,7 @@ public class Player {
 		ALIVE, DEAD;
 	}
 
+	private boolean isReady;
 	private int deathCount;
 	private Status status;
 	private Role role;
@@ -23,6 +27,18 @@ public class Player {
 		this.name = name;
 		this.ip = ip;
 		this.status = Status.ALIVE;
+		this.isReady = false;
+	}
+
+	@Override
+	public String toString() {
+		DBObject result = new BasicDBObject();
+		result.put("deathCount", deathCount);
+		result.put("name", name);
+		result.put("ready", isReady);
+		result.put("role", role == null ? role : role.toString());
+		result.put("status", status == null ? status : status.toString());
+		return result.toString();
 	}
 
 	public void voteToDeath(Player player) {
@@ -80,4 +96,11 @@ public class Player {
 		this.deathCount++;
 	}
 
+	public boolean isReady() {
+		return isReady;
+	}
+
+	public void setReady(boolean isReady) {
+		this.isReady = isReady;
+	}
 }

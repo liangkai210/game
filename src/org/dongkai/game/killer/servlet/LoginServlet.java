@@ -10,14 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.dongkai.game.killer.core.Controller;
 import org.dongkai.game.killer.core.Global;
 import org.dongkai.game.killer.core.Player;
-import org.dongkai.game.killer.core.SimpleController;
 import org.dongkai.game.killer.core.Util;
 
 public class LoginServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-
-	private static Controller gameController = new SimpleController();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -34,7 +31,7 @@ public class LoginServlet extends HttpServlet {
 			return;
 		}
 
-		Player player = gameController.addPlayer(username);
+		Player player = Controller.getController().addPlayer(username);
 		if (player == null) {
 			sendError("Name already been used, pls choose another one", req, resp);
 			return;

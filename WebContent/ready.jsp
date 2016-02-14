@@ -13,22 +13,21 @@
 <body>
 	<div class="site-wrapper">
 		<div class="site-wrapper-inner">
-
 			<div class="cover-container">
-
+				<jsp:include page="nav.jsp" />
 				<%
 					Player player = (Player) session.getAttribute("player");
 					if (player != null) {
 				%>
-				<%="<button class='btn btn-lg btn-default btn-block' type='submit'>Start!</button>"%>
+				<h3>
+					<%="Welcome: " + player.getName()%>
+				</h3>
+				<form class="form-signin" action="ready" method="post">
+					<%="<button class='btn btn-lg btn-default btn-block' type='submit'>Start!</button>"%>
+				</form>
 				<%
-					} else {
-
 					}
 				%>
-
-				<img alt="poluce" src="img/soldier.png">
-				<jsp:include page="nav.jsp" />
 				<jsp:include page="footer.jsp" />
 			</div>
 		</div>

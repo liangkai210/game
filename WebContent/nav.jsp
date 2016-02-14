@@ -12,7 +12,6 @@
 					Player player = (Player) session.getAttribute("player");
 					if (player != null) {
 				%>
-				<%="<li><a>" + player.getName() + "</a></li>"%>
 				<%="<li><a href='signout'>Sign out</a></li>"%>
 				<%
 					} else {
