@@ -7,11 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.dongkai.game.killer.Controller;
-import org.dongkai.game.killer.Global;
-import org.dongkai.game.killer.Player;
-import org.dongkai.game.killer.SimpleController;
-import org.dongkai.game.killer.Util;
+import org.dongkai.game.killer.core.Controller;
+import org.dongkai.game.killer.core.Global;
+import org.dongkai.game.killer.core.Player;
+import org.dongkai.game.killer.core.SimpleController;
+import org.dongkai.game.killer.core.Util;
 
 public class LoginServlet extends HttpServlet {
 

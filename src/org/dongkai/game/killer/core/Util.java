@@ -1,4 +1,4 @@
-package org.dongkai.game.killer;
+package org.dongkai.game.killer.core;
 
 import java.util.Random;
 import java.util.Set;

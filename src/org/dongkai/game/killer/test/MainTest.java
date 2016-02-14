@@ -5,9 +5,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.dongkai.game.killer.Player;
-import org.dongkai.game.killer.SimpleController;
-import org.dongkai.game.killer.Util;
+import org.dongkai.game.killer.core.Player;
+import org.dongkai.game.killer.core.SimpleController;
+import org.dongkai.game.killer.core.Util;
 
 public class MainTest {
 

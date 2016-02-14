@@ -1,4 +1,4 @@
-package org.dongkai.game.killer;
+package org.dongkai.game.killer.core;
 
 public class Player {
 

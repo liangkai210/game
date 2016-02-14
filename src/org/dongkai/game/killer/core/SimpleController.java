@@ -1,4 +1,4 @@
-package org.dongkai.game.killer;
+package org.dongkai.game.killer.core;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.dongkai.game.killer.Player.Role;
-import org.dongkai.game.killer.Player.Status;
+import org.dongkai.game.killer.core.Player.Role;
+import org.dongkai.game.killer.core.Player.Status;
 
 public class SimpleController implements Controller {
 
