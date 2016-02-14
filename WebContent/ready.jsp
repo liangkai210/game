@@ -22,12 +22,12 @@
 				<h3>
 					<%="Welcome: " + player.getName()%>
 				</h3>
-				<form class="form-signin" action="ready" method="post">
-					<%="<button class='btn btn-lg btn-default btn-block' type='submit'>Start!</button>"%>
-				</form>
 				<%
 					}
 				%>
+				<button onclick='start()' class='btn btn-lg btn-default btn-block'
+					type='submit'>Start!</button>
+				<jsp:include page="socket.jsp" />
 				<jsp:include page="footer.jsp" />
 			</div>
 		</div>

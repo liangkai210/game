@@ -2,7 +2,7 @@
 
 <p class="cover-heading">
 	Current Online:
-	<%=Controller.players.size()%>
+	<%=Controller.getController().getPlayers().size()%>
 </p>
 
 <div class="mastfoot">

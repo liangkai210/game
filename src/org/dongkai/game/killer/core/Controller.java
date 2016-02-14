@@ -10,6 +10,8 @@ import java.util.Set;
 import org.dongkai.game.killer.core.Player.Role;
 import org.dongkai.game.killer.core.Player.Status;
 
+import com.mongodb.BasicDBList;
+
 public class Controller {
 
 	private Map<String, Player> players;
@@ -42,9 +44,6 @@ public class Controller {
 			return null;
 		}
 		names.add(name);
-
-		System.out.println(name);
-
 		Player player = new Player(name, null);
 		players.put(name, player);
 		return player;
@@ -59,6 +58,9 @@ public class Controller {
 	}
 
 	public void assignStatus() {
+		if (players.size() < 4) {
+			return;
+		}
 		clear();
 		Set<Integer> set = new HashSet<>();
 		assignKiller(set);
@@ -168,5 +170,13 @@ public class Controller {
 
 	public void setPlayers(Map<String, Player> players) {
 		this.players = players;
+	}
+
+	public String getAllData() {
+		BasicDBList result = new BasicDBList();
+		for (Player player : players.values()) {
+			result.add(player.toString());
+		}
+		return result.toString();
 	}
 }

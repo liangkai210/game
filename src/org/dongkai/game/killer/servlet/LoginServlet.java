@@ -36,7 +36,6 @@ public class LoginServlet extends HttpServlet {
 			sendError("Name already been used, pls choose another one", req, resp);
 			return;
 		}
-
 		req.getSession().setAttribute(Global.PLAYER, player);
 		req.getRequestDispatcher("/ready.jsp").forward(req, resp);
 	}

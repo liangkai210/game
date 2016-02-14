@@ -1,7 +1,6 @@
 package org.dongkai.game.killer.core;
 
 import com.mongodb.BasicDBObject;
-import com.mongodb.DBObject;
 
 public class Player {
 
@@ -32,7 +31,7 @@ public class Player {
 
 	@Override
 	public String toString() {
-		DBObject result = new BasicDBObject();
+		BasicDBObject result = new BasicDBObject();
 		result.put("deathCount", deathCount);
 		result.put("name", name);
 		result.put("ready", isReady);
