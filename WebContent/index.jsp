@@ -26,22 +26,17 @@
 				<jsp:include page="header.jsp" />
 
 				<div class="inner cover">
-					<h1 class="cover-heading">Join</h1>
+					<h2 class="cover-heading">Join</h2>
 				</div>
-				<%
-					if (request.getAttribute("msg") != null) {
-				%>
-				<%=request.getAttribute("msg")%>
-				<%
-					}
-				%>
+
+				<jsp:include page="msg.jsp" />
+
 				<form class="form-signin" action="login" method="post">
 					<label for="inputEmail" class="sr-only">name</label> <input
 						type="text" id="username" class="form-control" name="username"
 						placeholder="Enter your name" required autofocus> <br>
 					<button class="btn btn-lg btn-default btn-block" type="submit">Go!</button>
 				</form>
-
 
 				<jsp:include page="footer.jsp" />
 

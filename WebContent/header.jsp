@@ -11,7 +11,7 @@
 					if (player != null) {
 				%>
 				<%="<li><a>" + player.getName() + "</a></li>"%>
-				<%="<li><a>Sign out</a></li>"%>
+				<%="<li><a href='signout'>Sign out</a></li>"%>
 				<%
 					}
 				%>

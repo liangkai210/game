@@ -6,7 +6,13 @@
 
 	<servlet>
 		<servlet-name>loginServlet</servlet-name>
-		<servlet-class>org.dongkai.game.killer.servlet.LoginSevlet
+		<servlet-class>org.dongkai.game.killer.servlet.LoginServlet
+		</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>SignoutServlet</servlet-name>
+		<servlet-class>org.dongkai.game.killer.servlet.SignoutServlet
 		</servlet-class>
 	</servlet>
 
@@ -15,4 +21,8 @@
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
 
+	<servlet-mapping>
+		<servlet-name>SignoutServlet</servlet-name>
+		<url-pattern>/signout</url-pattern>
+	</servlet-mapping>
 </web-app>

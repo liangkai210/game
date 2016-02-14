@@ -12,7 +12,7 @@ import org.dongkai.game.killer.Player;
 import org.dongkai.game.killer.SimpleController;
 import org.dongkai.game.killer.Util;
 
-public class LoginSevlet extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
