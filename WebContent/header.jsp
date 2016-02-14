@@ -5,7 +5,7 @@
 <meta name="description" content="Home page of the killer game">
 <meta name="author" content="Kai Liang, Dong Zhou">
 
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/cover.css" rel="stylesheet">
 <link href="css/signin.css" rel="stylesheet">
 

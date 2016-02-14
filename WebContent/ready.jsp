@@ -15,20 +15,17 @@
 		<div class="site-wrapper-inner">
 			<div class="cover-container">
 				<jsp:include page="nav.jsp" />
-				<%
-					Player player = (Player) session.getAttribute("player");
-					if (player != null) {
-				%>
-				<h3>
-					<%="Welcome: " + player.getName()%>
-				</h3>
-				<%
-					}
-				%>
-				<button onclick='start()' class='btn btn-lg btn-default btn-block'
-					type='submit'>Start!</button>
-				<jsp:include page="socket.jsp" />
+				<div id="game-role"></div>
+				<table class="table table-bordered table-hover">
+					<thead>
+					</thead>
+					<tbody id="table-body">
+					</tbody>
+				</table>
+				<button id="ready-game" onclick='start()'
+					class='btn btn-lg btn-default btn-block' type='submit'>Start!</button>
 				<jsp:include page="footer.jsp" />
+				<jsp:include page="socket.jsp" />
 			</div>
 		</div>
 	</div>

@@ -161,3 +161,11 @@ body {
     width: 700px;
   }
 }
+
+th {
+    text-align: center;
+}
+
+#game-role img {
+	max-width: 300px;
+}

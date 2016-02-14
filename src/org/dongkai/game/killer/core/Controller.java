@@ -97,6 +97,7 @@ public class Controller {
 
 	private void assign(Set<Integer> set, Role role) {
 		int randomNum = Util.getRandom(set, players.size());
+		System.out.println(randomNum);
 		players.get(names.get(randomNum)).setRole(role);
 	}
 

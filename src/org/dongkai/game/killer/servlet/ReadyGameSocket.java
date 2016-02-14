@@ -25,7 +25,12 @@ public class ReadyGameSocket {
 	@OnOpen
 	public void onOpen(Session userSession) {
 		userSessions.add(userSession);
-		System.out.println(userSession.getId());
+		boolean isAllReady = isAllReady();
+		if (isAllReady) {
+			Controller.getController().assignStatus();
+		}
+		String msg = createMsg(isAllReady);
+		dispatch(msg);
 	}
 
 	@OnClose
@@ -35,7 +40,6 @@ public class ReadyGameSocket {
 
 	@OnMessage
 	public void onMessage(String message, Session userSession) {
-
 		if (Util.isEmpty(message)) {
 			return;
 		}
@@ -44,14 +48,10 @@ public class ReadyGameSocket {
 			return;
 		}
 		current.setReady(true);
-
-		System.out.println("Message Receivede: " + message);
 		boolean isAllReady = isAllReady();
-		System.out.println(isAllReady);
 		if (isAllReady) {
 			Controller.getController().assignStatus();
 		}
-
 		String msg = createMsg(isAllReady);
 		dispatch(msg);
 	}
