@@ -23,28 +23,27 @@
 
 			<div class="cover-container">
 
+				<jsp:include page="header.jsp" />
+
 				<div class="inner cover">
-					<h1 class="cover-heading">Killer !</h1>
+					<h1 class="cover-heading">Join</h1>
 				</div>
-
-
+				<%
+					if (request.getAttribute("msg") != null) {
+				%>
 				<%=request.getAttribute("msg")%>
-
-				<form action="login">
+				<%
+					}
+				%>
+				<form class="form-signin" action="login" method="post">
 					<label for="inputEmail" class="sr-only">name</label> <input
 						type="text" id="username" class="form-control" name="username"
 						placeholder="Enter your name" required autofocus> <br>
-					<button class="btn btn-lg btn-primary btn-block" type="submit">Go!</button>
+					<button class="btn btn-lg btn-default btn-block" type="submit">Go!</button>
 				</form>
 
 
-				<div class="mastfoot">
-					<div class="inner">
-						<p>
-							Killer Game From <a href="https://twitter.com/mdo">@DongKai</a>.
-						</p>
-					</div>
-				</div>
+				<jsp:include page="footer.jsp" />
 
 			</div>
 
@@ -52,6 +51,6 @@
 
 	</div>
 
-	<script src="js/jquery-1.12.0.min.js"></script>
+
 </body>
 </html>
