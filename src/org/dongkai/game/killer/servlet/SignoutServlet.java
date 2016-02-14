@@ -8,18 +8,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.dongkai.game.killer.Controller;
+import org.dongkai.game.killer.Global;
 import org.dongkai.game.killer.Player;
 import org.dongkai.game.killer.SimpleController;
-import org.dongkai.game.killer.Util;
 
 public class SignoutServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
+	private Controller controller = new SimpleController();
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		System.out.println("~~~~~~~");
+		Player player = (Player) req.getSession().getAttribute(Global.PLAYER);
+		if (player != null) {
+			controller.removePlayer(player.getName());
+			req.getSession().removeAttribute(Global.PLAYER);
+		}
+		req.getRequestDispatcher("/index.jsp").forward(req, resp);
 	}
 
 	@Override

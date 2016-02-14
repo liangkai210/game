@@ -1,23 +1,11 @@
 
-<%@page import="org.dongkai.game.killer.Player"%>
-<div class="masthead clearfix">
-	<div class="inner">
-		<h3 class="masthead-brand">Killer</h3>
-		<nav>
-			<ul class="nav masthead-nav">
-				<li class="active"><a href="#">Home</a></li>
-				<%
-					Player player = (Player) session.getAttribute("player");
-					if (player != null) {
-				%>
-				<%="<li><a>" + player.getName() + "</a></li>"%>
-				<%="<li><a href='signout'>Sign out</a></li>"%>
-				<%
-					}
-				%>
-			</ul>
-		</nav>
-	</div>
-</div>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Home page of the killer game">
+<meta name="author" content="Kai Liang, Dong Zhou">
 
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/cover.css" rel="stylesheet">
+<link href="css/signin.css" rel="stylesheet">
 

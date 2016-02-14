@@ -2,18 +2,8 @@
 	pageEncoding="UTF-8"%>
 <html lang="en">
 <head>
-
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Home page of the killer game">
-<meta name="author" content="Kai Liang, Dong Zhou">
-
-
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/cover.css" rel="stylesheet">
-<link href="css/signin.css" rel="stylesheet">
-
+<title>Killer</title>
+<jsp:include page="header.jsp" />
 </head>
 <body>
 
@@ -23,7 +13,7 @@
 
 			<div class="cover-container">
 
-				<jsp:include page="header.jsp" />
+				<jsp:include page="nav.jsp" />
 
 				<div class="inner cover">
 					<h2 class="cover-heading">Join</h2>
@@ -38,6 +28,9 @@
 					<button class="btn btn-lg btn-default btn-block" type="submit">Go!</button>
 				</form>
 
+				<div class="inner cover">
+					<p class="cover-heading">Current Online:</p>
+				</div>
 				<jsp:include page="footer.jsp" />
 
 			</div>

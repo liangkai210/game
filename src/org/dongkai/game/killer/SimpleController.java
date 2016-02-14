@@ -13,12 +13,11 @@ import org.dongkai.game.killer.Player.Status;
 public class SimpleController implements Controller {
 
 	private List<String> names;
-	private Map<String, Player> players;
+	private static Map<String, Player> players = new HashMap<>();
 
 	private Role winner;
 
 	public SimpleController() {
-		this.players = new HashMap<>();
 		names = new ArrayList<>();
 	}
 
@@ -37,16 +36,16 @@ public class SimpleController implements Controller {
 
 		Player player = new Player(name, null);
 
-		this.players.put(name, player);
+		players.put(name, player);
 		return player;
 	}
 
 	public void removePlayer(Player player) {
-		this.players.remove(player);
+		players.remove(player);
 	}
 
 	public void removePlayer(int index) {
-		this.players.remove(index);
+		players.remove(index);
 	}
 
 	public Role getWinner() {
@@ -164,8 +163,9 @@ public class SimpleController implements Controller {
 		return players;
 	}
 
-	public void setPlayers(Map<String, Player> players) {
-		this.players = players;
+	@Override
+	public void removePlayer(String name) {
+		players.remove(name);
 	}
 
 }

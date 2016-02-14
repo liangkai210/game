@@ -10,4 +10,5 @@ public interface Controller {
 
 	public Player addPlayer(String name);
 
+	public void removePlayer(String name);
 }
