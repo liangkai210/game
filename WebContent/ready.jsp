@@ -23,7 +23,9 @@
 					</tbody>
 				</table>
 				<button id="ready-game" onclick='start()'
-					class='btn btn-lg btn-default btn-block' type='submit'>Start!</button>
+					class='btn btn-lg btn-default' type='submit'>Start!</button>
+				<button id="next-round" onclick='nextround()'
+					class='btn btn-lg btn-default' type='submit'>Next Round!</button>
 				<jsp:include page="footer.jsp" />
 				<jsp:include page="socket.jsp" />
 			</div>

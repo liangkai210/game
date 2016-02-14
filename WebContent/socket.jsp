@@ -38,8 +38,9 @@
 	}
 
 	function start() {
-		webSocket.send($("#username").val());
-		$("#ready-game").remove();
+		username = $("#username").val();
+		var msg = '{"type" : "ready","name" : "' + username + '"}';
+		webSocket.send(msg);
 		return false;
 	}
 
@@ -48,9 +49,11 @@
 			return;
 		}
 		var role;
+		var isAllNotReady = true;
 		var username = $("#username").val();
 		var json = JSON.parse(data);
-		var isReady = json['isReady'];
+		var isAllReady = json['isReady'];
+		var isCurrentPlayerReady = false;
 		var players = JSON.parse(json['players']);
 		var result = "<tr><th>USER</th><th>READY</th></tr>";
 		var ok = '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>';
@@ -60,29 +63,52 @@
 			var name = player.name;
 			if (username == name) {
 				role = player.role
+				isCurrentPlayerReady = player.ready;
 			}
-			var isReady = no;
+			var this_ready = no;
 			if (player.ready == true) {
-				isReady = ok;
+				this_ready = ok;
+				isAllNotReady = false;
 			}
-			result += "<tr><td>" + name + "</td>" + "<td>" + isReady
+			result += "<tr><td>" + name + "</td>" + "<td>" + this_ready
 					+ "</td></tr>";
 		}
-		if (isReady) {
-			showRole(role);
+		showRole(role);
+		$("#table-body").html(result);
+		if (isCurrentPlayerReady) {
+			$("#ready-game").hide();
 		} else {
-			$("#table-body").html(result);
+			$("#ready-game").show();
+		}
+		if (isAllNotReady) {
+			showRole("knife");
+		}
+		addNextRound(isAllReady, role);
+	}
+
+	function addNextRound(isAllReady, role) {
+		if (isAllReady && role == "SPEAKER") {
+			$('#next-round').show();
+		} else {
+			$('#next-round').hide();
 		}
 	}
 
+	function nextround() {
+		var msg = '{"type" : "next-round","name" : "' + username + '"}';
+		webSocket.send(msg);
+	}
+
 	function showRole(role) {
-		var actor = '<img src="./img/folk.png">';
+		var actor = '<img src="./img/knife.gif">';
 		if (role == 'POLICE') {
 			actor = '<img src="./img/soldier.png">';
 		} else if (role == 'KILLER') {
 			actor = '<img src="./img/killer.png">';
 		} else if (role == 'SPEAKER') {
 			actor = '<img src="./img/tangseng.png">';
+		} else if (role == "FOLK") {
+			actor = '<img src="./img/folk.png">';
 		}
 		$("#game-role").html(actor);
 	}

@@ -1,6 +1,11 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%
+	String path = request.getScheme() + "://" + request.getServerName() + ":"
+			+ request.getServerPort() + request.getContextPath();
+%>
 <html lang="en">
 <head>
 <title>Killer</title>
@@ -27,7 +32,7 @@
 					<button class="btn btn-lg btn-default btn-block" type="submit">Go!</button>
 				</form>
 
-				
+
 				<jsp:include page="footer.jsp" />
 
 			</div>

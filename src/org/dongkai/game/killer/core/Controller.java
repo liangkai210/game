@@ -7,12 +7,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.dongkai.game.killer.core.Player.Role;
 import org.dongkai.game.killer.core.Player.Status;
 
 import com.mongodb.BasicDBList;
 
 public class Controller {
+
+	static Logger logger = Logger.getLogger(Controller.class.getName());
 
 	private Map<String, Player> players;
 	private List<String> names;
@@ -97,7 +100,7 @@ public class Controller {
 
 	private void assign(Set<Integer> set, Role role) {
 		int randomNum = Util.getRandom(set, players.size());
-		System.out.println(randomNum);
+		logger.info("random number: " + randomNum);
 		players.get(names.get(randomNum)).setRole(role);
 	}
 
@@ -165,12 +168,28 @@ public class Controller {
 		players.remove(name);
 	}
 
+	public Player getPlayer(String name) {
+		return players.get(name);
+	}
+
 	public Map<String, Player> getPlayers() {
 		return players;
 	}
 
 	public void setPlayers(Map<String, Player> players) {
 		this.players = players;
+	}
+
+	public void clearReady() {
+		for (Player player : players.values()) {
+			player.setReady(false);
+		}
+	}
+
+	public void clearRole() {
+		for (Player player : players.values()) {
+			player.clear();
+		}
 	}
 
 	public String getAllData() {

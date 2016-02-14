@@ -37,7 +37,7 @@ public class LoginServlet extends HttpServlet {
 			return;
 		}
 		req.getSession().setAttribute(Global.PLAYER, player);
-		req.getRequestDispatcher("/ready.jsp").forward(req, resp);
+		resp.sendRedirect("ready.jsp");
 	}
 
 	private void sendError(String message, HttpServletRequest req, HttpServletResponse resp)

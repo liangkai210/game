@@ -11,14 +11,19 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
+import org.apache.log4j.Logger;
 import org.dongkai.game.killer.core.Controller;
 import org.dongkai.game.killer.core.Player;
+import org.dongkai.game.killer.core.Player.Role;
 import org.dongkai.game.killer.core.Util;
 
 import com.mongodb.BasicDBObject;
+import com.mongodb.util.JSON;
 
 @ServerEndpoint("/ready")
 public class ReadyGameSocket {
+
+	static Logger logger = Logger.getLogger(ReadyGameSocket.class.getName());
 
 	private static Set<Session> userSessions = Collections.synchronizedSet(new HashSet<Session>());
 
@@ -26,9 +31,6 @@ public class ReadyGameSocket {
 	public void onOpen(Session userSession) {
 		userSessions.add(userSession);
 		boolean isAllReady = isAllReady();
-		if (isAllReady) {
-			Controller.getController().assignStatus();
-		}
 		String msg = createMsg(isAllReady);
 		dispatch(msg);
 	}
@@ -40,14 +42,31 @@ public class ReadyGameSocket {
 
 	@OnMessage
 	public void onMessage(String message, Session userSession) {
+
 		if (Util.isEmpty(message)) {
 			return;
 		}
-		Player current = Controller.getController().getPlayers().get(message);
+
+		BasicDBObject json = (BasicDBObject) JSON.parse(message.toString());
+
+		String name = json.getString("name");
+		if (Util.isEmpty(name)) {
+			return;
+		}
+
+		Player current = Controller.getController().getPlayer(name);
 		if (current == null) {
 			return;
 		}
-		current.setReady(true);
+		String type = json.getString("type");
+
+		if ("ready".equals(type)) {
+			current.setReady(true);
+		} else if ("next-round".equals(type) && current.getRole() == Role.SPEAKER) {
+			Controller.getController().clearReady();
+			Controller.getController().clearRole();
+		}
+
 		boolean isAllReady = isAllReady();
 		if (isAllReady) {
 			Controller.getController().assignStatus();
