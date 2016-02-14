@@ -1,10 +1,8 @@
 package org.dongkai.game.killer.core;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import org.dongkai.game.killer.core.Player.Role;
@@ -13,7 +11,6 @@ import org.dongkai.game.killer.core.Player.Status;
 public class SimpleController implements Controller {
 
 	private List<String> names;
-	private static Map<String, Player> players = new HashMap<>();
 
 	private Role winner;
 
@@ -35,17 +32,8 @@ public class SimpleController implements Controller {
 		System.out.println(name);
 
 		Player player = new Player(name, null);
-
 		players.put(name, player);
 		return player;
-	}
-
-	public void removePlayer(Player player) {
-		players.remove(player);
-	}
-
-	public void removePlayer(int index) {
-		players.remove(index);
 	}
 
 	public Role getWinner() {
@@ -57,7 +45,7 @@ public class SimpleController implements Controller {
 	}
 
 	@Override
-	public void assign() {
+	public void assignStatus() {
 		clear();
 		Set<Integer> set = new HashSet<>();
 		assignKiller(set);
@@ -143,24 +131,20 @@ public class SimpleController implements Controller {
 
 	@Override
 	public boolean isGameOver() {
-		switch (killPerson().getRole()) {
-		case POLICE:
+		Role role = killPerson().getRole();
+		if (role == Role.POLICE) {
 			winner = Role.POLICE;
 			return true;
-		case KILLER:
+		}
+		if (role == Role.KILLER) {
 			winner = Role.KILLER;
 			return true;
-		default:
-			break;
 		}
 		if (countAlive() < 3) {
+			winner = Role.KILLER;
 			return true;
 		}
 		return false;
-	}
-
-	public Map<String, Player> getPlayers() {
-		return players;
 	}
 
 	@Override

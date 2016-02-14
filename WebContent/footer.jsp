@@ -1,3 +1,10 @@
+<%@page import="org.dongkai.game.killer.core.Controller"%>
+
+<p class="cover-heading">
+	Current Online:
+	<%=Controller.players.size()%>
+</p>
+
 <div class="mastfoot">
 	<div class="inner">
 		<p>

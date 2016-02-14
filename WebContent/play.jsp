@@ -1,4 +1,5 @@
-<%@page import="org.dongkai.game.killer.Player"%>
+
+<%@page import="org.dongkai.game.killer.core.Player"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -21,9 +22,9 @@
 					<img alt="police" src="img/soldier.png">
 				</div>
 
+				<jsp:include page="footer.jsp" />
 			</div>
 		</div>
 	</div>
-	<jsp:include page="footer.jsp" />
 </body>
 </html>

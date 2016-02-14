@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.dongkai.game.killer.core.Controller;
 import org.dongkai.game.killer.core.Player;
 import org.dongkai.game.killer.core.SimpleController;
 import org.dongkai.game.killer.core.Util;
@@ -37,15 +38,15 @@ public class MainTest {
 	}
 
 	public void display() {
-		for (Player player : controller.getPlayers().values()) {
-			System.out.println(player.getName() + " " + player.getRole() + " " + player.getStatus() + " "
-					+ player.getDeathCount());
+		for (Player player : Controller.players.values()) {
+			System.out.println(player.getName() + " " + player.getRole() + " " + player.getStatus()
+					+ " " + player.getDeathCount());
 		}
 	}
 
 	public void testVote(MainTest test, String name) {
-		for (Player player : test.controller.getPlayers().values()) {
-			player.voteToDeath(test.controller.getPlayers().get(name));
+		for (Player player : Controller.players.values()) {
+			player.voteToDeath(Controller.players.get(name));
 		}
 		test.controller.killPerson();
 	}
@@ -55,7 +56,7 @@ public class MainTest {
 		test.addUser();
 		test.display();
 		System.out.println();
-		test.controller.assign();
+		test.controller.assignStatus();
 		test.display();
 		System.out.println();
 		test.testVote(test, "Xu");

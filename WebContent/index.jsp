@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <html lang="en">
@@ -8,9 +9,7 @@
 <body>
 
 	<div class="site-wrapper">
-
 		<div class="site-wrapper-inner">
-
 			<div class="cover-container">
 
 				<jsp:include page="nav.jsp" />
@@ -28,17 +27,12 @@
 					<button class="btn btn-lg btn-default btn-block" type="submit">Go!</button>
 				</form>
 
-				<div class="inner cover">
-					<p class="cover-heading">Current Online:</p>
-				</div>
+				
 				<jsp:include page="footer.jsp" />
 
 			</div>
-
 		</div>
-
 	</div>
-
 
 </body>
 </html>
