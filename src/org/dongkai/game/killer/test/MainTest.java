@@ -5,13 +5,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.dongkai.game.killer.Player;
-import org.dongkai.game.killer.SimpleController;
-import org.dongkai.game.killer.Util;
+import org.dongkai.game.killer.core.Controller;
+import org.dongkai.game.killer.core.Player;
+import org.dongkai.game.killer.core.Util;
 
 public class MainTest {
 
-	SimpleController controller = new SimpleController();
+	Controller controller = Controller.getController();
 	List<String> names = new ArrayList<>();
 
 	public MainTest() {
@@ -37,15 +37,14 @@ public class MainTest {
 	}
 
 	public void display() {
-		for (Player player : controller.getPlayers().values()) {
-			System.out.println(player.getName() + " " + player.getRole() + " " + player.getStatus() + " "
-					+ player.getDeathCount());
+		for (Player player : Controller.getController().getPlayers().values()) {
+			System.out.println(player.toString());
 		}
 	}
 
 	public void testVote(MainTest test, String name) {
-		for (Player player : test.controller.getPlayers().values()) {
-			player.voteToDeath(test.controller.getPlayers().get(name));
+		for (Player player : Controller.getController().getPlayers().values()) {
+			player.voteToDeath(Controller.getController().getPlayers().get(name));
 		}
 		test.controller.killPerson();
 	}
@@ -55,7 +54,7 @@ public class MainTest {
 		test.addUser();
 		test.display();
 		System.out.println();
-		test.controller.assign();
+		test.controller.assignStatus();
 		test.display();
 		System.out.println();
 		test.testVote(test, "Xu");
